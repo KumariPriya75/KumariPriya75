@@ -1,5 +1,11 @@
-## Hi there 👋
+# Hi there 👋
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/KumariPriya75/KumariPriya75/output/bug-graph-dark.svg">
+    <img alt="Bug Graph" src="https://raw.githubusercontent.com/KumariPriya75/KumariPriya75/output/bug-graph.svg">
+  </picture>
+</p>
 <!--
 **KumariPriya75/KumariPriya75** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
