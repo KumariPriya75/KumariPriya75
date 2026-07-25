@@ -1,0 +1,33 @@
+name: Generate Bug Graph
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: run generator
+        env:
+          GH_TOKEN: ${{ secrets.BUG_GRAPH_TOKEN }}
+          GH_USERNAME: ${{ github.repository_owner }}
+        run: node generate.js
+
+      - name: push output branch
+        run: |
+          cd dist
+          git init
+          git checkout -b output
+          git config user.name "bug-graph-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "update bug graph"
+          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} output
